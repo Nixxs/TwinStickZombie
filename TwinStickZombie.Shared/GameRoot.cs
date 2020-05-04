@@ -30,7 +30,6 @@ namespace TwinStickZombie
             Instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
         }
 
         protected override void Initialize()
@@ -68,10 +67,6 @@ namespace TwinStickZombie
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(Art.Player, new Vector2(200, 200), Color.White);
-            spriteBatch.End();
 
             // TODO: Add your drawing code here
 

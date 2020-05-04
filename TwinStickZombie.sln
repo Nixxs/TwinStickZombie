@@ -7,20 +7,49 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TwinStickZombie.Shared", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwinStickZombie.WIN", "TwinStickZombie.WIN\TwinStickZombie.WIN.csproj", "{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwinStickZombie.UWP", "TwinStickZombie.UWP\TwinStickZombie.UWP.csproj", "{1CF751D0-993D-46DF-BC9D-80D5E06549BF}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		TwinStickZombie.Shared\TwinStickZombie.Shared.projitems*{1cf751d0-993d-46df-bc9d-80d5e06549bf}*SharedItemsImports = 4
 		TwinStickZombie.Shared\TwinStickZombie.Shared.projitems*{8216ba2a-fdff-4f3e-8e4f-f37c7685e3d3}*SharedItemsImports = 4
 		TwinStickZombie.Shared\TwinStickZombie.Shared.projitems*{a0cdbd0e-3a41-42b7-9425-a838bc2c7383}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Debug|ARM.ActiveCfg = Debug|x86
+		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Debug|x64.ActiveCfg = Debug|x86
 		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Debug|x86.ActiveCfg = Debug|x86
 		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Debug|x86.Build.0 = Debug|x86
+		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Release|ARM.ActiveCfg = Release|x86
+		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Release|x64.ActiveCfg = Release|x86
 		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Release|x86.ActiveCfg = Release|x86
 		{8216BA2A-FDFF-4F3E-8E4F-F37C7685E3D3}.Release|x86.Build.0 = Release|x86
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|ARM.Build.0 = Debug|ARM
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|ARM.Deploy.0 = Debug|ARM
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|x64.ActiveCfg = Debug|x64
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|x64.Build.0 = Debug|x64
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|x64.Deploy.0 = Debug|x64
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|x86.ActiveCfg = Debug|x86
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|x86.Build.0 = Debug|x86
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Debug|x86.Deploy.0 = Debug|x86
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|ARM.ActiveCfg = Release|ARM
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|ARM.Build.0 = Release|ARM
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|ARM.Deploy.0 = Release|ARM
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|x64.ActiveCfg = Release|x64
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|x64.Build.0 = Release|x64
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|x64.Deploy.0 = Release|x64
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|x86.ActiveCfg = Release|x86
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|x86.Build.0 = Release|x86
+		{1CF751D0-993D-46DF-BC9D-80D5E06549BF}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

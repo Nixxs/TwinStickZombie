@@ -1,8 +1,7 @@
 ﻿using System;
 
-namespace TwinStickZombie.WIN
+namespace TwinStickZombie.UWP
 {
-#if WINDOWS || LINUX
     /// <summary>
     /// The main class.
     /// </summary>
@@ -11,12 +10,10 @@ namespace TwinStickZombie.WIN
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
         static void Main()
         {
-            using (var game = new GameRoot())
-                game.Run();
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<GameRoot>();
+            Windows.ApplicationModel.Core.CoreApplication.Run(factory);
         }
     }
-#endif
 }
