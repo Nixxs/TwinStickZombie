@@ -9,10 +9,28 @@ namespace TwinStickZombie
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static GameRoot Instance { get; private set; }
+        public static Viewport Viewport
+        {
+            get
+            {
+                return Instance.GraphicsDevice.Viewport;
+            }
+        }
+        public static Vector2 ScreenSize
+        {
+            get
+            {
+                return new Vector2(Viewport.Width, Viewport.Height);
+            }
+        }
+
         public GameRoot()
         {
+            Instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
         }
 
         protected override void Initialize()
@@ -27,7 +45,7 @@ namespace TwinStickZombie
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Art.Load(Instance);
         }
 
         protected override void UnloadContent()
@@ -50,6 +68,10 @@ namespace TwinStickZombie
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(Art.Player, new Vector2(200, 200), Color.White);
+            spriteBatch.End();
 
             // TODO: Add your drawing code here
 

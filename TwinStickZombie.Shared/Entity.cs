@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TwinStickZombie.Shared
+namespace TwinStickZombie
 {
     abstract class Entity
     {
@@ -37,7 +37,7 @@ namespace TwinStickZombie.Shared
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(image, Position, null, colour, Orientation, Size/2f, 1f, 0,0);
+            spriteBatch.Draw(image, Position, null, colour, Orientation, Size / 2f, 1f, 0, 0);
         }
     }
 }

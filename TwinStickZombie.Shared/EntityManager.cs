@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Linq;
 
-namespace TwinStickZombie.Shared
+namespace TwinStickZombie
 {
     static class EntityManager
     {
@@ -12,7 +12,7 @@ namespace TwinStickZombie.Shared
         // to track if we are currently looping through all the entities and running thier update
         // methods on them right now or not. We don't want ot touch the list if it's currently doing this
         static bool isUpdating;
-        
+
         public static int Count
         {
             get

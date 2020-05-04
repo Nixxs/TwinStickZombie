@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TwinStickZombie.WIN
+namespace TwinStickZombie
 {
 #if WINDOWS || LINUX
     /// <summary>
