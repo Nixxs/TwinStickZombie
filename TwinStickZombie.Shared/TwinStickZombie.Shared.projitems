@@ -9,6 +9,7 @@
     <Import_RootNamespace>TwinStickZombie.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameRoot.cs" />
   </ItemGroup>
 </Project>
