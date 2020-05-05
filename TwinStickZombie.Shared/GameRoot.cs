@@ -34,9 +34,10 @@ namespace TwinStickZombie
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
+            //must have base.Initialize() run first before anything else
             base.Initialize();
+
+            EntityManager.Add(Player.Instance);
         }
 
         protected override void LoadContent()
@@ -54,21 +55,18 @@ namespace TwinStickZombie
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            {
-                Exit();
-            }
-
-            // TODO: Add your update logic here
+            EntityManager.Update();
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
+            EntityManager.Draw(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
