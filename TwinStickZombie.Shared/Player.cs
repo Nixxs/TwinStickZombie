@@ -1,4 +1,7 @@
-﻿namespace TwinStickZombie
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace TwinStickZombie
 {
     class Player : Entity
     {
@@ -25,7 +28,14 @@
 
         public override void Update()
         {
-            //throw new NotImplementedException();
+            // this is movement code, needs to be updated to use forces instead of this direct movement method
+            float speed = 8;
+            Velocity = speed * Input.GetMovementDirection();
+            Position = Position + Velocity;
+
+            // clamps the player to the screen size
+            Position = Vector2.Clamp(Position, Size / 2, GameRoot.ScreenSize - Size / 2);
+            
         }
     }
 }

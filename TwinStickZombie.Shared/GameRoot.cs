@@ -8,6 +8,7 @@ namespace TwinStickZombie
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        SpriteFont debugText;
 
         public static GameRoot Instance { get; private set; }
         public static Viewport Viewport
@@ -46,6 +47,8 @@ namespace TwinStickZombie
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Art.Load(Instance);
+
+            debugText = Content.Load<SpriteFont>("font\\debug");
         }
 
         protected override void UnloadContent()
@@ -56,7 +59,7 @@ namespace TwinStickZombie
         protected override void Update(GameTime gameTime)
         {
             EntityManager.Update();
-
+            Input.Update();
             base.Update(gameTime);
         }
 
@@ -66,6 +69,7 @@ namespace TwinStickZombie
 
             spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
             EntityManager.Draw(spriteBatch);
+            spriteBatch.DrawString(debugText, "Score", new Vector2(20, 20), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
