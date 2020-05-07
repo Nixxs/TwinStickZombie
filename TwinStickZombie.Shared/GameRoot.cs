@@ -9,10 +9,10 @@ namespace TwinStickZombie
     {
         GraphicsDeviceManager graphics;
         RenderTarget2D renderTarget;
-        float renderScale = 0.4444f;
 
         SpriteBatch spriteBatch;
-        SpriteFont debugText;
+        SpriteFont debugFont;
+        String debugText;
 
         public static GameRoot Instance { get; private set; }
         public static Viewport Viewport
@@ -42,6 +42,7 @@ namespace TwinStickZombie
 
             //must have base.Initialize() run first before anything else
             base.Initialize();
+
             graphics.IsFullScreen = false;
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
@@ -54,12 +55,13 @@ namespace TwinStickZombie
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            // Create the render target for drawing the game to and allowing us to scale later.
+            // Creating a render target allows for static screen items to be draw on top
+            // of the game screen
             renderTarget = new RenderTarget2D(GraphicsDevice, 1920, 1080);
 
             Art.Load(Instance);
 
-            debugText = Content.Load<SpriteFont>("font\\debug");
+            debugFont = Content.Load<SpriteFont>("font\\debug");
         }
 
         protected override void UnloadContent()
@@ -71,33 +73,33 @@ namespace TwinStickZombie
         {
             EntityManager.Update();
             Input.Update();
+            Camera.Update();
+
+            debugText = String.Format("X: {0}\nY: {1}\n",
+                        Player.Instance.Position.X,
+                        Player.Instance.Position.Y);
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            // change this scale to configure how much the camera is zoomed in
-            renderScale = 1.5f;
-
             GraphicsDevice.SetRenderTarget(renderTarget);
             GraphicsDevice.Clear(Color.Black);
             
-            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
+            // draw the game screen to the render target
+            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive, transformMatrix: Camera.Transform);
             EntityManager.Draw(spriteBatch);
+            spriteBatch.Draw(Art.Zombie, new Vector2(300, 300), Color.Red);
             spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
             GraphicsDevice.Clear(Color.Black);
+
+            // draw render target to the screen
             spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
-            spriteBatch.DrawString(debugText, 
-                                    String.Format("X: {0}\nY: {1}\n", 
-                                                  Player.Instance.Position.X, 
-                                                  Player.Instance.Position.Y), 
-                                    new Vector2(10f, 10f), 
-                                    Color.White);
-            // this moves the camera around, at the moment the centre of the camera and its position is on the player so the player is pretty
-            // much in the middle of the screen all the time.
-            spriteBatch.Draw(renderTarget, Player.Instance.Position, null, Color.White, 0f, Player.Instance.Position, renderScale, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(debugFont,debugText,  new Vector2(10f, 10f), Color.White);
+            spriteBatch.Draw(renderTarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.End();
 
             base.Draw(gameTime);

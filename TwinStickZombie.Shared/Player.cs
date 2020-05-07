@@ -33,7 +33,8 @@ namespace TwinStickZombie
             Velocity = speed * Input.GetMovementDirection();
             Position = Position + Velocity;
 
-            // clamps the player to the screen size
+            // clamps the player to the screen size, this can be extended later to create larger
+            // maps if needed
             Position = Vector2.Clamp(Position, Size / 2, GameRoot.ScreenSize - Size / 2);
             
         }
