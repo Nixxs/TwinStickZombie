@@ -12,7 +12,7 @@ namespace TwinStickZombie
         private static Matrix _position;
         private static Matrix _offset;
 
-        public static float ZoomFactor = 2;
+        public static float ZoomFactor = 1;
         private static Matrix _zoom;
 
         public static Vector2 CameraPosition;

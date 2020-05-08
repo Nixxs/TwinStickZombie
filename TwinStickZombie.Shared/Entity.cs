@@ -14,6 +14,7 @@ namespace TwinStickZombie
         public Vector2 Position;
         public Vector2 Velocity;
         public float Orientation;
+        public float Speed = 0f;
         public float Radius = 20;
         public bool IsExpired;
 
