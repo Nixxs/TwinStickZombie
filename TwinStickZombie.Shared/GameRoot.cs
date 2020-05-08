@@ -85,20 +85,20 @@ namespace TwinStickZombie
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.SetRenderTarget(renderTarget);
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.DarkGray);
             
             // draw the game screen to the render target
-            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive, transformMatrix: Camera.Transform);
+            spriteBatch.Begin(SpriteSortMode.Texture, transformMatrix: Camera.Transform);
             EntityManager.Draw(spriteBatch);
-            spriteBatch.Draw(Art.Zombie, new Vector2(300, 300), Color.Red);
+            spriteBatch.Draw(Art.ZombieIdle1, new Vector2(300, 300), Color.White);
             spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.White);
 
             // draw render target to the screen
-            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
-            spriteBatch.DrawString(debugFont,debugText,  new Vector2(10f, 10f), Color.White);
+            spriteBatch.Begin(SpriteSortMode.Texture, BlendState.NonPremultiplied);
+            spriteBatch.DrawString(debugFont,debugText,  new Vector2(10f, 10f), Color.Black);
             spriteBatch.Draw(renderTarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.End();
 

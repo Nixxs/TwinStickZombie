@@ -15,6 +15,7 @@
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Animation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Art.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls.cs" />

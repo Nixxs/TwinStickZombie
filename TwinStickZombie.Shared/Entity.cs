@@ -25,7 +25,6 @@ namespace TwinStickZombie
                 if (image == null)
                 {
                     return Vector2.Zero;
-
                 }
                 else
                 {
