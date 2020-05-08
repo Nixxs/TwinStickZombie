@@ -33,13 +33,13 @@ namespace TwinStickZombie
             _idleFrames.Add(Art.PlayerIdle1);
             _idleFrames.Add(Art.PlayerIdle2);
             _idleFrames.Add(Art.PlayerIdle3);
-            _animationIdle = new Animation(_idleFrames, 10, true);
+            _animationIdle = new Animation(_idleFrames, 10, Animation.Mode.Looping);
 
             _movingFrames.Add(Art.PlayerRun1);
             _movingFrames.Add(Art.PlayerRun2);
             _movingFrames.Add(Art.PlayerRun3);
             _movingFrames.Add(Art.PlayerRun4);
-            _animationMoving = new Animation(_movingFrames, 10, true);
+            _animationMoving = new Animation(_movingFrames, 10, Animation.Mode.Looping);
 
             image = _animationIdle.CurrentFrame;
             Position = GameRoot.ScreenSize / 2;

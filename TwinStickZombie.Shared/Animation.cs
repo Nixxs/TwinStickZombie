@@ -11,19 +11,25 @@ namespace TwinStickZombie
         private int _frameUpdateSpeed;
         private int _frameUpdateTimer = 0;
         private int _frameIndex = 0;
-        private bool _isLooping;
         public Texture2D CurrentFrame;
+        private Mode _mode;
+        private bool _playSingle = false;
 
-
-        public Animation(List<Texture2D> frames, int frameUpdateSpeed, bool isLooping)
+        public Animation(List<Texture2D> frames, int frameUpdateSpeed, Mode mode)
         {
             _frames = frames;
             _frameUpdateSpeed = frameUpdateSpeed;
             CurrentFrame = _frames[_frameIndex];
-            _isLooping = isLooping;
+            _mode = mode;
         }
 
-        public void Update()
+        public enum Mode
+        {
+            Looping,
+            OnDemand
+        }
+
+        private void PlayAnimation()
         {
             if (_frameUpdateTimer <= 0)
             {
@@ -39,11 +45,37 @@ namespace TwinStickZombie
                 {
                     _frameIndex = 0;
                 }
-            } else
+            }
+            else
             {
                 // i frame has passed, subtract from the timer
                 _frameUpdateTimer -= 1;
             }
+        }
+
+        public void Update()
+        {
+            if (_mode == Mode.Looping)
+            {
+                PlayAnimation();
+            }
+            else
+            {
+                // this is where I will somehow handle the play only once code
+                if (_playSingle)
+                {
+                    PlayAnimation();
+                }
+                else
+                {
+                    CurrentFrame = _frames[0];
+                }
+            }
+        }
+
+        public void Play()
+        {
+            _playSingle = true;
         }
     }
 }
