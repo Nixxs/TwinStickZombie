@@ -75,6 +75,11 @@ namespace TwinStickZombie
             Input.Update();
             Camera.Update();
 
+            // DEBUG START
+            // run the update method for the debug and testing code
+            Debug.Update();
+            // DEBUG END
+
             debugText = String.Format("X: {0}\nY: {1}\n",
                         Player.Instance.Position.X,
                         Player.Instance.Position.Y);

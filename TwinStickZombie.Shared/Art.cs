@@ -17,6 +17,16 @@ namespace TwinStickZombie
         public static Texture2D ZombieIdle2;
         public static Texture2D ZombieIdle3;
 
+        public static Texture2D Explosion1;
+        public static Texture2D Explosion2;
+        public static Texture2D Explosion3;
+        public static Texture2D Explosion4;
+        public static Texture2D Explosion5;
+        public static Texture2D Explosion6;
+        public static Texture2D Explosion7;
+        public static Texture2D Explosion8;
+
+
         public static Texture2D Bullet;
         public static Texture2D Pointer;
 
@@ -34,6 +44,15 @@ namespace TwinStickZombie
             ZombieIdle1 = instance.Content.Load<Texture2D>("art\\zombie_idle_1");
             ZombieIdle2 = instance.Content.Load<Texture2D>("art\\zombie_idle_2");
             ZombieIdle3 = instance.Content.Load<Texture2D>("art\\zombie_idle_3");
+
+            Explosion1 = instance.Content.Load<Texture2D>("effect\\explosion2_1");
+            Explosion2 = instance.Content.Load<Texture2D>("effect\\explosion2_2");
+            Explosion3 = instance.Content.Load<Texture2D>("effect\\explosion2_3");
+            Explosion4 = instance.Content.Load<Texture2D>("effect\\explosion2_4");
+            Explosion5 = instance.Content.Load<Texture2D>("effect\\explosion2_5");
+            Explosion6 = instance.Content.Load<Texture2D>("effect\\explosion2_6");
+            Explosion7 = instance.Content.Load<Texture2D>("effect\\explosion2_7");
+            Explosion8 = instance.Content.Load<Texture2D>("effect\\explosion2_8");
 
             Bullet = instance.Content.Load<Texture2D>("art\\Bullet");
             Pointer = instance.Content.Load<Texture2D>("art\\Pointer");

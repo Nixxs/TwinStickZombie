@@ -13,7 +13,8 @@ namespace TwinStickZombie
         private int _frameIndex = 0;
         public Texture2D CurrentFrame;
         private Mode _mode;
-        private bool _playSingle = false;
+        public bool PlaySingle { get; private set; }
+
 
         public Animation(List<Texture2D> frames, int frameUpdateSpeed, Mode mode)
         {
@@ -21,6 +22,7 @@ namespace TwinStickZombie
             _frameUpdateSpeed = frameUpdateSpeed;
             CurrentFrame = _frames[_frameIndex];
             _mode = mode;
+            PlaySingle = false;
         }
 
         public enum Mode
@@ -29,7 +31,7 @@ namespace TwinStickZombie
             OnDemand
         }
 
-        private void PlayAnimation()
+        private void UpdateFrame()
         {
             if (_frameUpdateTimer <= 0)
             {
@@ -44,6 +46,11 @@ namespace TwinStickZombie
                 if (_frameIndex > _frames.Count - 1)
                 {
                     _frameIndex = 0;
+
+                    // if playsingle was set to true then it is now set to false
+                    // will will stop this animation from playing again until it
+                    // is again set to true.
+                    PlaySingle = false;
                 }
             }
             else
@@ -57,14 +64,14 @@ namespace TwinStickZombie
         {
             if (_mode == Mode.Looping)
             {
-                PlayAnimation();
+                UpdateFrame();
             }
             else
             {
                 // this is where I will somehow handle the play only once code
-                if (_playSingle)
+                if (PlaySingle)
                 {
-                    PlayAnimation();
+                    UpdateFrame();
                 }
                 else
                 {
@@ -75,7 +82,7 @@ namespace TwinStickZombie
 
         public void Play()
         {
-            _playSingle = true;
+            PlaySingle = true;
         }
     }
 }
