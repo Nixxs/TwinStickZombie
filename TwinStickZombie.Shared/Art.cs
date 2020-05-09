@@ -26,6 +26,11 @@ namespace TwinStickZombie
         public static Texture2D Explosion7;
         public static Texture2D Explosion8;
 
+        public static Texture2D Impact1;
+        public static Texture2D Impact2;
+        public static Texture2D Impact3;
+        public static Texture2D Impact4;
+        public static Texture2D Impact5;
 
         public static Texture2D Bullet;
         public static Texture2D Pointer;
@@ -53,6 +58,12 @@ namespace TwinStickZombie
             Explosion6 = instance.Content.Load<Texture2D>("effect\\explosion2_6");
             Explosion7 = instance.Content.Load<Texture2D>("effect\\explosion2_7");
             Explosion8 = instance.Content.Load<Texture2D>("effect\\explosion2_8");
+
+            Impact1 = instance.Content.Load<Texture2D>("effect\\impact4_1");
+            Impact2 = instance.Content.Load<Texture2D>("effect\\impact4_2");
+            Impact3 = instance.Content.Load<Texture2D>("effect\\impact4_3");
+            Impact4 = instance.Content.Load<Texture2D>("effect\\impact4_4");
+            Impact5 = instance.Content.Load<Texture2D>("effect\\impact4_5");
 
             Bullet = instance.Content.Load<Texture2D>("art\\Bullet");
             Pointer = instance.Content.Load<Texture2D>("art\\Pointer");

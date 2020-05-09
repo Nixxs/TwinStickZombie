@@ -10,7 +10,8 @@ namespace TwinStickZombie
 
         public enum Type
         {
-            Explosion
+            Explosion,
+            Impact
         }
 
         public Effect(Vector2 position, List<Texture2D> animationFrames, int animationSpeed, Animation.Mode animationMode)
@@ -21,7 +22,7 @@ namespace TwinStickZombie
             Position = position;
             Velocity = Vector2.Zero;
             IsExpired = false;
-            _animation.Play();
+            _animation.Play = true;
         }
 
         public override void Update()
@@ -30,7 +31,7 @@ namespace TwinStickZombie
             image = _animation.CurrentFrame;
 
             // if playsingle has been set to false expire this entity
-            if (!_animation.PlaySingle)
+            if (!_animation.Play)
             {
                 IsExpired = true;
             }
@@ -53,6 +54,17 @@ namespace TwinStickZombie
 
                     Effect explosion = new Effect(position, explosionFrames, 5, Animation.Mode.OnDemand);
                     EntityManager.Add(explosion);
+                    break;
+                case Type.Impact:
+                    List<Texture2D> impactFrames = new List<Texture2D>();
+                    impactFrames.Add(Art.Impact1);
+                    impactFrames.Add(Art.Impact2);
+                    impactFrames.Add(Art.Impact3);
+                    impactFrames.Add(Art.Impact4);
+                    impactFrames.Add(Art.Impact5);
+
+                    Effect impact = new Effect(position, impactFrames, 3, Animation.Mode.OnDemand);
+                    EntityManager.Add(impact);
                     break;
                 default:
                     break;

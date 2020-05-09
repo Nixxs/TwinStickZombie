@@ -14,6 +14,11 @@ namespace TwinStickZombie
             {
                 Effect.CreateEffect(Input.MousePosition, Effect.Type.Explosion);
             }
+
+            if (Input.WasKeyPressed(Keys.F2))
+            {
+                Effect.CreateEffect(Input.MousePosition, Effect.Type.Impact);
+            }
             //DEBUG END
         }
     }
