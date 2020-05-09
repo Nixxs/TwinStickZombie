@@ -14,6 +14,8 @@ namespace TwinStickZombie
 
         private SpriteEffects _flipDirection;
 
+        public Weapon PrimaryWeapon = Armory.CreatePistol("Glock");
+
         private static Player _instance;
         public static Player Instance
         {
@@ -64,7 +66,7 @@ namespace TwinStickZombie
 
         public override void Update()
         {
-            // update the animations
+            // update the player animations
             _animationIdle.Update();
             _animationMoving.Update();
 
@@ -87,6 +89,9 @@ namespace TwinStickZombie
                 _flipDirection = SpriteEffects.None;
             }
 
+            // here we update the weapons
+            PrimaryWeapon.Update();
+
             // this is movement code, needs to be updated to use forces instead of this direct movement method
             // the current input is added to the current velocity this introduces inertia
             // the friction is applied to the overall force to counter it. eventually
@@ -101,6 +106,7 @@ namespace TwinStickZombie
         
         public override void Draw(SpriteBatch spriteBatch)
         {
+            PrimaryWeapon.Draw(spriteBatch);
             spriteBatch.Draw(image, Position, null, colour, Orientation, Size / 2f, 1f, _flipDirection, 0);
         }
     }
