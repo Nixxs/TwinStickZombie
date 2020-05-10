@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 
+using Microsoft.Xna.Framework.Graphics;
+
 namespace TwinStickZombie
 {
     class Bullet : Entity
@@ -11,6 +13,7 @@ namespace TwinStickZombie
             Velocity = velocity;
             Orientation = Velocity.ToAngle();
             Radius = 4;
+            colour = Color.Ivory;
         }
 
         public override void Update()
@@ -23,10 +26,15 @@ namespace TwinStickZombie
             Position += Velocity;
 
             // delete bullets that leave the boundary of the world
-            if (!Extensions.Contains(Position, Vector2.Zero, World.Size))
+            if (!MathUtil.Contains(Position, Vector2.Zero, World.Size))
             {
                 IsExpired = true;
             }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(image, Position, null, colour, Orientation, Size / 2f, 1f, SpriteEffects.FlipHorizontally, 0);
         }
     }
 }

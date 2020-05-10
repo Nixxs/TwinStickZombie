@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameRoot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MathUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Weapon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)World.cs" />

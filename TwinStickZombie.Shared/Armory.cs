@@ -14,10 +14,11 @@ namespace TwinStickZombie
             frames.Add(Art.PistolShoot3);
 
             int damage = 3;
-            int cooldown = 60;
-            Weapon.Mode mode = Weapon.Mode.Single;
+            int cooldown = 20;
+            float bulletSpeed = 20f;
+            Weapon.Mode mode = Weapon.Mode.Auto;
 
-            return new Weapon(name, cooldown, damage, mode, frames, 10, Animation.Mode.OnDemand);
+            return new Weapon(name, cooldown, damage, bulletSpeed, mode, frames, 10, Animation.Mode.OnDemand);
         }
     }
 }

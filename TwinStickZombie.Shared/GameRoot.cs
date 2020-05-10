@@ -93,7 +93,7 @@ namespace TwinStickZombie
             GraphicsDevice.Clear(Color.DarkGray);
             
             // draw the game screen to the render target
-            spriteBatch.Begin(SpriteSortMode.Texture, transformMatrix: Camera.Transform);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, transformMatrix: Camera.Transform);
             EntityManager.Draw(spriteBatch);
             spriteBatch.Draw(Art.ZombieIdle1, new Vector2(300, 300), Color.White);
             spriteBatch.End();

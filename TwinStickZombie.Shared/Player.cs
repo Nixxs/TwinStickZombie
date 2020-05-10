@@ -80,11 +80,11 @@ namespace TwinStickZombie
             }
 
             // if the player is moving left, flip the image
-            if (Input.GetMovementDirection().X < 0)
+            if (Input.GetAimDirection().X < 0)
             {
                 _flipDirection = SpriteEffects.FlipHorizontally;
             }
-            if (Input.GetMovementDirection().X > 0)
+            if (Input.GetAimDirection().X > 0)
             {
                 _flipDirection = SpriteEffects.None;
             }
