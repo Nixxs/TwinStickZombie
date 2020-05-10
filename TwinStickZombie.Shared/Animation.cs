@@ -10,7 +10,7 @@ namespace TwinStickZombie
         private List<Texture2D> _frames = new List<Texture2D>();
         private int _frameUpdateSpeed;
         private int _frameUpdateTimer = 0;
-        private int _frameIndex = 0;
+        public int FrameIndex = 0;
         public Texture2D CurrentFrame;
         private Mode _mode;
         public bool Play;
@@ -19,7 +19,7 @@ namespace TwinStickZombie
         {
             _frames = frames;
             _frameUpdateSpeed = frameUpdateSpeed;
-            CurrentFrame = _frames[_frameIndex];
+            CurrentFrame = _frames[FrameIndex];
             _mode = mode;
             Play = false;
         }
@@ -36,15 +36,15 @@ namespace TwinStickZombie
             {
                 // reset the timer
                 _frameUpdateTimer = _frameUpdateSpeed;
-                CurrentFrame = _frames[_frameIndex];
-                _frameIndex += 1;
+                CurrentFrame = _frames[FrameIndex];
+                FrameIndex += 1;
 
                 // if the frame index goes beryond the size of the frames
                 // then reset it back to zero. This is for the continuously 
                 // looping animations ones only
-                if (_frameIndex > _frames.Count - 1)
+                if (FrameIndex > _frames.Count - 1)
                 {
-                    _frameIndex = 0;
+                    FrameIndex = 0;
 
                     // if playsingle was set to true then it is now set to false
                     // will will stop this animation from playing again until it

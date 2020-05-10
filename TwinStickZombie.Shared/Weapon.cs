@@ -43,10 +43,11 @@ namespace TwinStickZombie
         // genrate the bullet and play the animation
         private void Shoot()
         {
-            _animation.Play = true;
-            
             if (_cooldownRemaining <= 0)
             {
+                _animation.Play = true;
+                _animation.FrameIndex = 1;
+
                 _cooldownRemaining = _cooldown;
 
                 var aim = Input.GetAimDirection();
@@ -80,6 +81,9 @@ namespace TwinStickZombie
             Orientation = aimAngle;
 
             Position = Player.Instance.Position + offset;
+
+            // handle the weapons animations
+            _animation.Update();
             image = _animation.CurrentFrame;
 
             if (aim.X < 0)
