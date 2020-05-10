@@ -105,6 +105,7 @@ namespace TwinStickZombie
 
             // draw render target to the screen
             spriteBatch.Begin(SpriteSortMode.Texture);
+            
             spriteBatch.DrawString(debugFont, debugText,  new Vector2(10f, 10f), Color.Black);
             spriteBatch.Draw(renderTarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.End();

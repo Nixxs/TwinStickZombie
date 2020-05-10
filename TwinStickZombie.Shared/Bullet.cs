@@ -6,7 +6,9 @@ namespace TwinStickZombie
 {
     class Bullet : Entity
     {
-        public Bullet(Vector2 position, Vector2 velocity)
+        private int _damage;
+
+        public Bullet(Vector2 position, Vector2 velocity, int damage)
         {
             image = Art.Bullet;
             Position = position;
@@ -14,6 +16,7 @@ namespace TwinStickZombie
             Orientation = Velocity.ToAngle();
             Radius = 4;
             colour = Color.Ivory;
+            _damage = damage;
         }
 
         public override void Update()

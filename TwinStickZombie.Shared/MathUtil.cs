@@ -23,5 +23,11 @@ namespace TwinStickZombie
         {
             return magnitude * new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
+
+        // gets the opposite angle from an given angle
+        public static float OppositeAngle(float angle)
+        {
+            return (angle + 180) % 360;
+        }
     }
 }

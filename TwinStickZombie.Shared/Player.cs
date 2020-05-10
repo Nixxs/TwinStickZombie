@@ -13,7 +13,6 @@ namespace TwinStickZombie
         private static List<Texture2D> _movingFrames = new List<Texture2D>();
 
         private SpriteEffects _flipDirection;
-
         public Weapon PrimaryWeapon = Armory.CreatePistol("Glock");
 
         private static Player _instance;
@@ -49,7 +48,7 @@ namespace TwinStickZombie
             Speed = 4f;
         }
 
-        private bool IsMoving
+        public bool IsMoving
         {
             get
             {

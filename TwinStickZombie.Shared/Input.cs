@@ -123,14 +123,7 @@ namespace TwinStickZombie
         {
             _aimDirection = MousePosition - Player.Instance.Position;
             _aimDirection = Vector2.Normalize(_aimDirection);
-            if (_aimDirection == Vector2.Zero)
-            {
-                return _lastAimDirection;
-            }
-            else
-            {
-                return _aimDirection;
-            }
+            return _aimDirection;
         }
 
         public static Vector2 GetAimDirection()
@@ -147,7 +140,6 @@ namespace TwinStickZombie
 
             _aimDirection = _gamePadState.ThumbSticks.Right;
             _aimDirection.Y *= -1;
-            
 
             if (_aimDirection == Vector2.Zero)
             {

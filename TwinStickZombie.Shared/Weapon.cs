@@ -15,6 +15,8 @@ namespace TwinStickZombie
         private int _cooldown;
         private Mode _mode;
         private float _bulletSpeed;
+        private float _recoil;
+        private Vector2 _crossHairPosition;
 
         public enum Mode
         {
@@ -28,7 +30,7 @@ namespace TwinStickZombie
             Rifle
         }
 
-        public Weapon(string name, int cooldown, int damage, float bulletSpeed, Mode mode, List<Texture2D> animationFrames, int animationSpeed, Animation.Mode animationMode)
+        public Weapon(string name, int cooldown, int damage, float bulletSpeed, float recoil, Mode mode, List<Texture2D> animationFrames, int animationSpeed, Animation.Mode animationMode)
         {
             _animation = new Animation(animationFrames, animationSpeed, animationMode);
 
@@ -38,6 +40,8 @@ namespace TwinStickZombie
             IsExpired = false;
             Velocity = Vector2.Zero;
             _bulletSpeed = bulletSpeed;
+            _recoil = recoil;
+            _damage = damage;
         }
 
         // genrate the bullet and play the animation
@@ -50,7 +54,7 @@ namespace TwinStickZombie
 
                 _cooldownRemaining = _cooldown;
 
-                var aim = Input.GetAimDirection();
+                var aim = Input.GetAimDirection() + new Vector2(0, -0.03f);
                 float aimAngle = aim.ToAngle();
                 Quaternion aimQuat = Quaternion.CreateFromYawPitchRoll(0, 0, aimAngle);
                 Vector2 vel = MathUtil.FromPolar(aimAngle, _bulletSpeed);
@@ -58,14 +62,17 @@ namespace TwinStickZombie
                 Vector2 offset = Vector2.Zero;
                 if (aim.X < 0)
                 {
-                    offset = Vector2.Transform(new Vector2(25, 5), aimQuat);
+                    offset = Vector2.Transform(new Vector2(25, 10), aimQuat);
                 }
                 else
                 {
-                    offset = Vector2.Transform(new Vector2(25, -5), aimQuat);
+                    offset = Vector2.Transform(new Vector2(25, -10), aimQuat);
                 }
 
-                EntityManager.Add(new Bullet(Position + offset, vel));
+                EntityManager.Add(new Bullet(Position + offset, vel, _damage));
+
+                // handle the recoil
+                Player.Instance.Velocity += MathUtil.FromPolar((Player.Instance.Position - Position).ToAngle(), _recoil);
             }
         }
 
@@ -106,11 +113,28 @@ namespace TwinStickZombie
             {
                 _cooldownRemaining -= 1;
             }
+
+            // update crosshair position
+            if (aim.X < 0)
+            {
+                _crossHairPosition = Position + Vector2.Transform(new Vector2(150, 15), aimQuat);
+            }
+            if (aim.X > 0)
+            {
+                _crossHairPosition = Position + Vector2.Transform(new Vector2(150, -15), aimQuat);
+            }
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(image, Position, null, colour, Orientation, Size / 2f, 1f, _flipDirection, 1);
+
+            // only draw the crosshair if player is not moving
+            if (!Player.Instance.IsMoving)
+            {
+                spriteBatch.Draw(Art.Pointer, _crossHairPosition, null, Color.White);
+            }
         }
     }
 }
