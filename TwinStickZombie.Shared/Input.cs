@@ -14,6 +14,8 @@ namespace TwinStickZombie
         private static GamePadState _gamePadState;
         private static GamePadState _lastGamePadState;
 
+        private static Vector2 _lastAimDirection;
+        private static Vector2 _aimDirection;
         private static bool isAimingWithMouse = false;
 
         public static Vector2 MousePosition
@@ -35,7 +37,7 @@ namespace TwinStickZombie
             _gamePadState = GamePad.GetState(PlayerIndex.One);
 
             // check if the mouse is being used or not and updates accordingly
-            if (_gamePadState.ThumbSticks.Right != Vector2.Zero)
+            if (_gamePadState.ThumbSticks.Right != Vector2.Zero || _lastMouseState.Position == _mouseState.Position)
             {
                 isAimingWithMouse = false;
             }
@@ -119,34 +121,42 @@ namespace TwinStickZombie
 
         private static Vector2 GetMouseAimDirection()
         {
-            Vector2 direction = MousePosition - Player.Instance.Position;
-            if (direction == Vector2.Zero)
+            _aimDirection = MousePosition - Player.Instance.Position;
+            _aimDirection = Vector2.Normalize(_aimDirection);
+            if (_aimDirection == Vector2.Zero)
             {
-                return Vector2.Zero;
+                return _lastAimDirection;
             }
             else
             {
-                return Vector2.Normalize(direction);
+                return _aimDirection;
             }
         }
 
         public static Vector2 GetAimDirection()
         {
+            if (!(_aimDirection == Vector2.Zero))
+            {
+                _lastAimDirection = _aimDirection;
+            }
+
             if (isAimingWithMouse)
             {
                 return GetMouseAimDirection();
             }
 
-            Vector2 direction = _gamePadState.ThumbSticks.Right;
-            direction.Y *= -1;
+            _aimDirection = _gamePadState.ThumbSticks.Right;
+            _aimDirection.Y *= -1;
+            
 
-            if (direction == Vector2.Zero)
+            if (_aimDirection == Vector2.Zero)
             {
-                return Vector2.Zero;
+                return _lastAimDirection;
             }
             else
             {
-                return Vector2.Normalize(direction);
+                _aimDirection = Vector2.Normalize(_aimDirection);
+                return _aimDirection;
             }
         }
 
