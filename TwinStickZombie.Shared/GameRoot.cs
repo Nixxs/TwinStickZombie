@@ -43,12 +43,13 @@ namespace TwinStickZombie
             //must have base.Initialize() run first before anything else
             base.Initialize();
 
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
 
             EntityManager.Add(Player.Instance);
+            EntityManager.Add(Enemy.Zombie.CreateZombie(new Vector2(500, 500)));
         }
 
         protected override void LoadContent()

@@ -10,5 +10,11 @@ namespace TwinStickZombie
         {
             return (float)Math.Atan2(vector.Y, vector.X);
         }
+
+        public static Vector2 ScaleTo(this Vector2 vector, float length)
+        {
+            // multiplying the given vector by the fraction of it's length
+            return vector * (length / vector.Length());
+        }
     }
 }

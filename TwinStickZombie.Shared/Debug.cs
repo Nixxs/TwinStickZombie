@@ -19,6 +19,9 @@ namespace TwinStickZombie
             {
                 Effect.CreateEffect(Input.MousePosition, Effect.Type.Impact);
             }
+
+
+            
             //DEBUG END
         }
     }
