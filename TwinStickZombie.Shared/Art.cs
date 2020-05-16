@@ -17,6 +17,22 @@ namespace TwinStickZombie
         public static Texture2D ZombieIdle2;
         public static Texture2D ZombieIdle3;
 
+        public static Texture2D ZombieRun1;
+        public static Texture2D ZombieRun2;
+        public static Texture2D ZombieRun3;
+
+        public static Texture2D ZombieAttack1;
+        public static Texture2D ZombieAttack2;
+        public static Texture2D ZombieAttack3;
+        public static Texture2D ZombieAttack4;
+        public static Texture2D ZombieAttack5;
+
+        public static Texture ZombieDie1;
+        public static Texture ZombieDie2;
+        public static Texture ZombieDie3;
+        public static Texture ZombieDie4;
+        public static Texture ZombieDie5;
+
         public static Texture2D Explosion1;
         public static Texture2D Explosion2;
         public static Texture2D Explosion3;
@@ -50,9 +66,25 @@ namespace TwinStickZombie
             PlayerRun3 = instance.Content.Load<Texture2D>("art\\player_run_3");
             PlayerRun4 = instance.Content.Load<Texture2D>("art\\player_run_4");
 
-            ZombieIdle1 = instance.Content.Load<Texture2D>("art\\zombie_idle_1");
-            ZombieIdle2 = instance.Content.Load<Texture2D>("art\\zombie_idle_2");
-            ZombieIdle3 = instance.Content.Load<Texture2D>("art\\zombie_idle_3");
+            ZombieIdle1 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_idle_1");
+            ZombieIdle2 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_idle_2");
+            ZombieIdle3 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_idle_3");
+
+            ZombieRun1 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_run_1");
+            ZombieRun2 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_run_2");
+            ZombieRun3 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_run_3");
+
+            ZombieAttack1 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_attack_1");
+            ZombieAttack2 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_attack_2");
+            ZombieAttack3 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_attack_3");
+            ZombieAttack4 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_attack_4");
+            ZombieAttack5 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_attack_5");
+
+            ZombieDie1 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_headshot_1");
+            ZombieDie2 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_headshot_2");
+            ZombieDie3 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_headshot_3");
+            ZombieDie4 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_headshot_4");
+            ZombieDie5 = instance.Content.Load<Texture2D>("art\\enemy\\zombie\\zombie_headshot_5");
 
             Explosion1 = instance.Content.Load<Texture2D>("effect\\explosion2_1");
             Explosion2 = instance.Content.Load<Texture2D>("effect\\explosion2_2");

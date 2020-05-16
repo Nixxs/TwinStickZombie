@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Debug.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enemy\Behaviours.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enemy\Zombie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EntityManager.cs" />

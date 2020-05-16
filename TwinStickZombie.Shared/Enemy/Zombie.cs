@@ -8,6 +8,18 @@ namespace TwinStickZombie.Enemy
     {
         private List<IEnumerator<int>> behaviours = new List<IEnumerator<int>>();
 
+        private static Animation _animationIdle;
+        private static List<Texture2D> _idleFrames = new List<Texture2D>();
+
+        private static Animation _animationMoving;
+        private static List<Texture2D> _movingFrames = new List<Texture2D>();
+
+        private static Animation _animationAttack;
+        private static List<Texture2D> _attackFrames = new List<Texture2D>();
+
+        private static Animation _animationDie;
+        private static List<Texture2D> _dieFrames = new List<Texture2D>();
+
         private int timeUntilStart = 60;
         public bool IsActive
         {
@@ -19,7 +31,12 @@ namespace TwinStickZombie.Enemy
 
         public Zombie(Vector2 position)
         {
-            image = Art.ZombieIdle1;
+            _idleFrames.Add(Art.ZombieIdle1);
+            _idleFrames.Add(Art.ZombieIdle2);
+            _idleFrames.Add(Art.ZombieIdle3);
+            _animationIdle = new Animation(_idleFrames, 10, Animation.Mode.Looping);
+
+            image = _animationIdle.CurrentFrame;
             Position = position;
             Radius = image.Width / 2f;
             colour = Color.Transparent;
@@ -59,6 +76,10 @@ namespace TwinStickZombie.Enemy
             Position = Vector2.Clamp(Position, Size / 2, World.Size - Size / 2);
 
             Velocity *= 0.8f;
+
+
+            _animationIdle.Update();
+            image = _animationIdle.CurrentFrame;
         }
 
         public void WasShot()
@@ -66,23 +87,13 @@ namespace TwinStickZombie.Enemy
             IsExpired = true;
         }
 
-
-        public static Zombie CreateZombie(Vector2 position)
+        public static Zombie Create(Vector2 position)
         {
             Zombie zombie = new Zombie(position);
-            zombie.AddBehavior(zombie.FollowPlayer());
+            zombie.AddBehavior(Behaviours.FollowPlayer(zombie, 0.25f));
 
             return zombie;
         }
 
-        //behaviours
-        IEnumerable<int> FollowPlayer(float acceleration = 1f)
-        {
-            while (true)
-            {
-                Velocity += (Player.Instance.Position - Position).ScaleTo(acceleration);
-                yield return 0;
-            }
-        }
     }
 }
