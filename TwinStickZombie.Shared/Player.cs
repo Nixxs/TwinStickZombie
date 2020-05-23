@@ -45,7 +45,7 @@ namespace TwinStickZombie
             image = _animationIdle.CurrentFrame;
             Position = GameRoot.ScreenSize / 2;
             Radius = 10;
-            Speed = 4f;
+            Speed = 3f;
         }
 
         public bool IsMoving

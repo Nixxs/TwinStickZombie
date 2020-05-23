@@ -49,6 +49,7 @@ namespace TwinStickZombie
 
             EntityManager.Add(Player.Instance);
             EntityManager.Add(Enemy.Zombie.Create(new Vector2(500, 500)));
+            EntityManager.Add(Enemy.Zombie.Create(new Vector2(600, 600)));
         }
 
         protected override void LoadContent()
@@ -97,7 +98,6 @@ namespace TwinStickZombie
             // draw the game screen to the render target
             spriteBatch.Begin(SpriteSortMode.FrontToBack, transformMatrix: Camera.Transform);
             EntityManager.Draw(spriteBatch);
-            spriteBatch.Draw(Art.ZombieIdle1, new Vector2(300, 300), Color.White);
             spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
